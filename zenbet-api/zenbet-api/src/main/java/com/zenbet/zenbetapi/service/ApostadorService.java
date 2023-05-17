@@ -10,4 +10,6 @@ public interface ApostadorService {
     List<Apostador> listarApostadores();
 
     Apostador actualizarApostador(Apostador apostador);
+
+    void eliminarApostador(Long dni);
 }

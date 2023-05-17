@@ -17,7 +17,9 @@ public class ApostadorServiceImpl implements ApostadorService {
 
     @Override
     public Apostador crearApostador(Apostador apostador) {
-        return apostadorRepository.save(apostador);
+        if(apostadorRepository.findById(apostador.getDni()).isEmpty())
+            return apostadorRepository.save(apostador);
+        else return null;
     }
 
     @Override
@@ -38,6 +40,10 @@ public class ApostadorServiceImpl implements ApostadorService {
         } else {
             return null;
         }
+    }
 
+    @Override
+    public void eliminarApostador(Long dni) {
+        apostadorRepository.deleteById(dni);
     }
 }
