@@ -15,6 +15,8 @@ public class ApostadorServiceImpl implements ApostadorService {
 
     @Override
     public Apostador crearApostador(Apostador apostador) {
-        return apostadorRepository.save(apostador);
+        if(apostadorRepository.findById(apostador.getDni()).isEmpty())
+            return apostadorRepository.save(apostador);
+        else return null;
     }
 }
