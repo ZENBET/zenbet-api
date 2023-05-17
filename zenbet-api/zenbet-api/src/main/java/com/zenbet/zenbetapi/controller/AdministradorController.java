@@ -38,4 +38,10 @@ public class AdministradorController {
             return new ResponseEntity<Administrador>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> eliminarAdministrador(@RequestBody Administrador administrador) {
+        administradorService.eliminarAdministrador(administrador.getDni());
+        return ResponseEntity.ok().build();
+    }
 }
