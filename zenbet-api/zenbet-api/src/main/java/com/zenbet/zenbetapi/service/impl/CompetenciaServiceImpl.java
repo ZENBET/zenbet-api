@@ -21,4 +21,9 @@ public class CompetenciaServiceImpl implements CompetenciaService {
         return competenciaRepository.findAll();
     }
 
+    @Override
+    public Competencia crearCompetencia(Competencia competencia){
+        return competenciaRepository.save(competencia);
+    }
+
 }
