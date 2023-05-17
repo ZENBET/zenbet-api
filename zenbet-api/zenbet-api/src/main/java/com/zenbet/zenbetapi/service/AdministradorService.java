@@ -11,4 +11,6 @@ public interface AdministradorService {
 
     Administrador actualizarAdministrador(Administrador administrador);
 
+    void eliminarAdministrador(Long dni);
+
 }

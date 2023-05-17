@@ -40,4 +40,9 @@ public class AdministradorServiceImpl implements AdministradorService {
             return null;
         }
     }
+
+    @Override
+    public void eliminarAdministrador(Long dni) {
+        administradorRepository.deleteById(dni);
+    }
 }
