@@ -11,16 +11,16 @@ import lombok.Setter;
 @Setter
 public class Usuario {
     @Id
-    @Column(name="dni")
+    @Column(name="dni", unique = true)
     private Long dni;
 
     @Column(name="nombre", nullable = false)
     private String nombre;
 
-    @Column(name="telefono", nullable = false)
+    @Column(name="telefono", nullable = false, unique = true)
     private String telefono;
 
-    @Column(name="correo", nullable = false)
+    @Column(name="correo", nullable = false, unique = true)
     private String correo;
 
     @Column(name="direccion", nullable = false)
