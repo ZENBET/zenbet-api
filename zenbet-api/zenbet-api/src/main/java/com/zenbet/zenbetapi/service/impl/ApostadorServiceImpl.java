@@ -24,4 +24,20 @@ public class ApostadorServiceImpl implements ApostadorService {
     public List<Apostador> listarApostadores() {
         return apostadorRepository.findAll();
     }
+
+    @Override
+    public Apostador actualizarApostador(Apostador apostador) {
+        Apostador adminToUpdate = apostadorRepository.findById(apostador.getDni()).orElse(null);
+        if(adminToUpdate != null) {
+            adminToUpdate.setNombre(apostador.getNombre());
+            adminToUpdate.setTelefono(apostador.getTelefono());
+            adminToUpdate.setCorreo(apostador.getCorreo());
+            adminToUpdate.setDireccion(apostador.getDireccion());
+            adminToUpdate.setContrasena(apostador.getContrasena());
+            return apostadorRepository.save(adminToUpdate);
+        } else {
+            return null;
+        }
+
+    }
 }
