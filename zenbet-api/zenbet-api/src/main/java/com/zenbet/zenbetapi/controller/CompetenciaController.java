@@ -28,4 +28,14 @@ public class CompetenciaController {
         return new ResponseEntity<Competencia>(competenciaService.crearCompetencia(competencia),HttpStatus.CREATED);
     }
 
+    @PutMapping
+    public ResponseEntity<Competencia> actualizarCompetencia(@RequestBody Competencia competencia){
+        Competencia updatedCompetencia = competenciaService.actualizarCompetencia(competencia);
+        if (updatedCompetencia != null){
+            return new ResponseEntity<Competencia>(updatedCompetencia, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<Competencia>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
