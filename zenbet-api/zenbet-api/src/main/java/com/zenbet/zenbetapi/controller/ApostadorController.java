@@ -28,4 +28,14 @@ public class ApostadorController {
     public ResponseEntity<List<Apostador>> listarApostadores(){
         return new ResponseEntity<List<Apostador>>(apostadorService.listarApostadores(), HttpStatus.OK);
     }
+
+    @PutMapping
+    public ResponseEntity<Apostador> actualizarApostador(@RequestBody Apostador apostador){
+        Apostador updatedApos= apostadorService.actualizarApostador(apostador);
+        if(updatedApos != null) {
+            return new ResponseEntity<Apostador>(updatedApos, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Apostador>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
