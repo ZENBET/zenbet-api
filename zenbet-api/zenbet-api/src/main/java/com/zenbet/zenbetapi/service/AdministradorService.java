@@ -7,4 +7,6 @@ import java.util.List;
 public interface AdministradorService {
     Administrador crearAdministrador(Administrador administrador);
 
+    List<Administrador> listarAdministradores();
+
 }
