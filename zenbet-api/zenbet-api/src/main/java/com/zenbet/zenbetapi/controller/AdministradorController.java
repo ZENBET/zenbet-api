@@ -28,4 +28,14 @@ public class AdministradorController {
     public ResponseEntity<List<Administrador>> listarAdministradores(){
         return new ResponseEntity<List<Administrador>>(administradorService.listarAdministradores(), HttpStatus.OK);
     }
+
+    @PutMapping
+    public ResponseEntity<Administrador> actualizarAdministrador(@RequestBody Administrador administrador){
+        Administrador updatedAdmin = administradorService.actualizarAdministrador(administrador);
+        if(updatedAdmin != null) {
+            return new ResponseEntity<Administrador>(updatedAdmin, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Administrador>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
