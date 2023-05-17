@@ -26,4 +26,17 @@ public class CompetenciaServiceImpl implements CompetenciaService {
         return competenciaRepository.save(competencia);
     }
 
+    @Override
+    public Competencia actualizarCompetencia(Competencia competencia){
+        Competencia competenciaToUpdate = competenciaRepository.findById(competencia.getIdCompetencia()).orElse(null);
+        if(competenciaToUpdate != null){
+            competenciaToUpdate.setNombreCompetencia(competencia.getNombreCompetencia());
+            competenciaToUpdate.setFechaInicio(competencia.getFechaInicio());
+            competenciaToUpdate.setFechaFin(competencia.getFechaFin());
+            return competenciaRepository.save(competenciaToUpdate);
+        }else {
+            return null;
+        }
+    }
+
 }
