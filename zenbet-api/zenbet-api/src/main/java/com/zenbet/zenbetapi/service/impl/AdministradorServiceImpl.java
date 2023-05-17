@@ -25,4 +25,19 @@ public class AdministradorServiceImpl implements AdministradorService {
     public List<Administrador> listarAdministradores() {
         return administradorRepository.findAll();
     }
+
+    @Override
+    public Administrador actualizarAdministrador(Administrador administrador) {
+        Administrador adminToUpdate = administradorRepository.findById(administrador.getDni()).orElse(null);
+        if(adminToUpdate != null) {
+            adminToUpdate.setNombre(administrador.getNombre());
+            adminToUpdate.setTelefono(administrador.getTelefono());
+            adminToUpdate.setCorreo(administrador.getCorreo());
+            adminToUpdate.setDireccion(administrador.getDireccion());
+            adminToUpdate.setContrasena(administrador.getContrasena());
+            return administradorRepository.save(adminToUpdate);
+        } else {
+            return null;
+        }
+    }
 }

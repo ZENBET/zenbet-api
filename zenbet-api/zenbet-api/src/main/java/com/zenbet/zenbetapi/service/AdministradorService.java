@@ -9,4 +9,6 @@ public interface AdministradorService {
 
     List<Administrador> listarAdministradores();
 
+    Administrador actualizarAdministrador(Administrador administrador);
+
 }
