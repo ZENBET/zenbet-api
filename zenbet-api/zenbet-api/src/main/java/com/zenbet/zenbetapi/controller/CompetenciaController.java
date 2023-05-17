@@ -38,4 +38,10 @@ public class CompetenciaController {
         }
     }
 
+    @DeleteMapping
+    public ResponseEntity<Void> eliminarCompetencia(@RequestBody Competencia competencia){
+        competenciaService.eliminarCompetencia(competencia.getIdCompetencia());
+        return ResponseEntity.ok().build();
+    }
+
 }

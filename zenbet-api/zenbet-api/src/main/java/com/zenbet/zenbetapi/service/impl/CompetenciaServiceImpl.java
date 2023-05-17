@@ -39,4 +39,9 @@ public class CompetenciaServiceImpl implements CompetenciaService {
         }
     }
 
+    @Override
+    public void eliminarCompetencia(Long idCompetencia){
+        competenciaRepository.deleteById(idCompetencia);
+    }
+
 }
