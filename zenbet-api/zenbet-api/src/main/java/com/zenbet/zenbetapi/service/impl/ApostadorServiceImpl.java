@@ -5,6 +5,8 @@ import com.zenbet.zenbetapi.repository.ApostadorRepository;
 import com.zenbet.zenbetapi.service.ApostadorService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApostadorServiceImpl implements ApostadorService {
     private final ApostadorRepository apostadorRepository;
@@ -16,5 +18,10 @@ public class ApostadorServiceImpl implements ApostadorService {
     @Override
     public Apostador crearApostador(Apostador apostador) {
         return apostadorRepository.save(apostador);
+    }
+
+    @Override
+    public List<Apostador> listarApostadores() {
+        return apostadorRepository.findAll();
     }
 }
