@@ -17,9 +17,8 @@ public class CompetenciaController {
     public CompetenciaController(CompetenciaService competenciaService){
         this.competenciaService = competenciaService;
     }
-
-    @PostMapping
-    public ResponseEntity<Competencia> addCompetencia(@RequestBody Competencia competencia){
-        return new ResponseEntity<Competencia>(competenciaService.createCompetencia(competencia),HttpStatus.CREATED);
+    @GetMapping
+    public ResponseEntity<List<Competencia>> listarAllCompetencias(){
+        return new ResponseEntity<List<Competencia>>(competenciaService.listarAllCompetencias(),HttpStatus.OK);
     }
 }

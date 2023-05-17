@@ -15,9 +15,10 @@ public class CompetenciaServiceImpl implements CompetenciaService {
     public CompetenciaServiceImpl(CompetenciaRepository competenciaRepository){
         this.competenciaRepository = competenciaRepository;
     }
+
     @Override
-    public Competencia createCompetencia(Competencia competencia){
-        return competenciaRepository.save(competencia);
+    public List<Competencia> listarAllCompetencias() {
+        return competenciaRepository.findAll();
     }
 
 }
