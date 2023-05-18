@@ -5,6 +5,7 @@ import com.zenbet.zenbetapi.domain.Equipo;
 import java.util.List;
 public interface EquipoService {
 
-    List<Equipo> listarAllEquipos();
+    Equipo crearEquipo(Equipo equipo);
 
+    List<Equipo> listarAllEquipos();
 }
