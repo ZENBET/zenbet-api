@@ -6,6 +6,7 @@ import com.zenbet.zenbetapi.service.CompetenciaService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompetenciaServiceImpl implements CompetenciaService {
@@ -44,4 +45,8 @@ public class CompetenciaServiceImpl implements CompetenciaService {
         competenciaRepository.deleteById(idCompetencia);
     }
 
+    @Override
+    public Optional<Competencia> buscarPorId(Long id) {
+        return competenciaRepository.findById(id);
+    }
 }

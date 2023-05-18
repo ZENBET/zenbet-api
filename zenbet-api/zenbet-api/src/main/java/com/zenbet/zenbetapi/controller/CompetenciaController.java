@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/competencia")
@@ -42,6 +43,16 @@ public class CompetenciaController {
     public ResponseEntity<Void> eliminarCompetencia(@RequestBody Competencia competencia){
         competenciaService.eliminarCompetencia(competencia.getIdCompetencia());
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Competencia> buscarPorId(@PathVariable("id") Long id) {
+        Optional<Competencia> competencia = competenciaService.buscarPorId(id);
+        if (competencia.isPresent()) {
+            return ResponseEntity.ok(competencia.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
