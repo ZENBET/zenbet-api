@@ -38,4 +38,10 @@ public class ApostadorController {
             return new ResponseEntity<Apostador>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> eliminarApostador(@RequestBody Apostador apostador) {
+        apostadorService.eliminarApostador(apostador.getDni());
+        return ResponseEntity.ok().build();
+    }
 }

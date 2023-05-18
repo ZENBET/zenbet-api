@@ -41,4 +41,9 @@ public class ApostadorServiceImpl implements ApostadorService {
             return null;
         }
     }
+
+    @Override
+    public void eliminarApostador(Long dni) {
+        apostadorRepository.deleteById(dni);
+    }
 }
