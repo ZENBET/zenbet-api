@@ -21,4 +21,9 @@ public class EquipoController {
     public ResponseEntity<List<Equipo>> listarAllEquipos() {
         return new ResponseEntity<List<Equipo>>(equipoService.listarAllEquipos(), HttpStatus.OK);
     }
+
+    @PostMapping
+    public ResponseEntity<Equipo> agregarEquipo(@RequestBody Equipo equipo) {
+        return new ResponseEntity<Equipo>(equipoService.crearEquipo(equipo), HttpStatus.CREATED);
+    }
 }
