@@ -11,19 +11,15 @@ import java.util.List;
 public class EquipoServiceImpl implements EquipoService {
     private final EquipoRepository equipoRepository;
 
-    public EquipoServiceImpl(EquipoRepository equipoRepository) {
+    public EquipoServiceImpl(EquipoRepository equipoRepository){
         this.equipoRepository = equipoRepository;
     }
 
     @Override
-    public List<Equipo> listarAllEquipos() {
-        return equipoRepository.findAll();
-    }
+    public List<Equipo> listarAllEquipos() { return equipoRepository.findAll(); }
 
     @Override
-    public Equipo crearEquipo(Equipo equipo) {
-        return equipoRepository.save(equipo);
-    }
+    public Equipo crearEquipo(Equipo equipo) { return equipoRepository.save(equipo);}
 
     @Override
     public Equipo actualizarEquipo(Equipo equipo) {
@@ -36,4 +32,7 @@ public class EquipoServiceImpl implements EquipoService {
             return null;
         }
     }
+    @Override
+    public void eliminarEquipo(Long idEquipo){ equipoRepository.deleteById(idEquipo);}
+
 }

@@ -10,4 +10,7 @@ public interface EquipoService {
     List<Equipo> listarAllEquipos();
 
     Equipo actualizarEquipo( Equipo equipo);
+
+    void eliminarEquipo(Long idEquipo);
+
 }
