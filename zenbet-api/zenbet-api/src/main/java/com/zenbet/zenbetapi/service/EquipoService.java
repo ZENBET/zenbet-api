@@ -8,4 +8,6 @@ public interface EquipoService {
     Equipo crearEquipo(Equipo equipo);
 
     List<Equipo> listarAllEquipos();
+
+    Equipo actualizarEquipo( Equipo equipo);
 }

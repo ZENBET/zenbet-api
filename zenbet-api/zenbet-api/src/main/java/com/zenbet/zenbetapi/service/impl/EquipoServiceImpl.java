@@ -24,4 +24,16 @@ public class EquipoServiceImpl implements EquipoService {
     public Equipo crearEquipo(Equipo equipo) {
         return equipoRepository.save(equipo);
     }
+
+    @Override
+    public Equipo actualizarEquipo(Equipo equipo) {
+        Equipo equipoToUpdate = equipoRepository.findById(equipo.getIdEquipo()).orElse(null);
+        if (equipoToUpdate != null) {
+            equipoToUpdate.setNombreEquipo(equipo.getNombreEquipo());
+            equipoToUpdate.setUbicacionEquipo(equipo.getUbicacionEquipo());
+            return equipoRepository.save(equipoToUpdate);
+        } else {
+            return null;
+        }
+    }
 }

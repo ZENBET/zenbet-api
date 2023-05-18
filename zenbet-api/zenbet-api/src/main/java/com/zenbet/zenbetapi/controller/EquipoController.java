@@ -26,4 +26,14 @@ public class EquipoController {
     public ResponseEntity<Equipo> agregarEquipo(@RequestBody Equipo equipo) {
         return new ResponseEntity<Equipo>(equipoService.crearEquipo(equipo), HttpStatus.CREATED);
     }
+
+    @PutMapping
+    public ResponseEntity<Equipo> actualizarEquipo(@RequestBody Equipo equipo) {
+        Equipo updatedEquipo = equipoService.actualizarEquipo(equipo);
+        if (updatedEquipo != null) {
+            return new ResponseEntity<Equipo>(updatedEquipo, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<Equipo>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
