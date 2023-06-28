@@ -6,6 +6,7 @@ import com.zenbet.zenbetapi.service.ApostadorService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ApostadorServiceImpl implements ApostadorService {
@@ -45,5 +46,9 @@ public class ApostadorServiceImpl implements ApostadorService {
     @Override
     public void eliminarApostador(Long dni) {
         apostadorRepository.deleteById(dni);
+    }
+
+    public Optional<Apostador> buscarPorDni(Long dni) {
+        return apostadorRepository.findById(dni);
     }
 }

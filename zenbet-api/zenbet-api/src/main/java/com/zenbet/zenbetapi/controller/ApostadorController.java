@@ -1,15 +1,18 @@
 package com.zenbet.zenbetapi.controller;
 
 import com.zenbet.zenbetapi.domain.Apostador;
+import com.zenbet.zenbetapi.repository.AdministradorRepository;
+import com.zenbet.zenbetapi.repository.ApostadorRepository;
 import com.zenbet.zenbetapi.service.ApostadorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/apostador")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ApostadorController {
     private final ApostadorService apostadorService;
     public ApostadorController(ApostadorService apostadorService){
@@ -29,8 +32,8 @@ public class ApostadorController {
         return new ResponseEntity<List<Apostador>>(apostadorService.listarApostadores(), HttpStatus.OK);
     }
 
-    @PutMapping
-    public ResponseEntity<Apostador> actualizarApostador(@RequestBody Apostador apostador){
+    @PutMapping("/find/{id}")
+    public ResponseEntity<Apostador> actualizarApostador(@PathVariable Long dni, @RequestBody Apostador apostador){
         Apostador updatedApos= apostadorService.actualizarApostador(apostador);
         if(updatedApos != null) {
             return new ResponseEntity<Apostador>(updatedApos, HttpStatus.OK);
@@ -39,9 +42,21 @@ public class ApostadorController {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> eliminarApostador(@RequestBody Apostador apostador) {
-        apostadorService.eliminarApostador(apostador.getDni());
+    @DeleteMapping("/{dni}")
+    public ResponseEntity<Void> eliminarApostador(@PathVariable("dni") String dni) {
+        apostadorService.eliminarApostador(Long.parseLong(dni));
         return ResponseEntity.ok().build();
     }
+
+
+    @GetMapping("/find/{id}")
+    public ResponseEntity<Apostador> buscarPorDni(@PathVariable("id") Long id) {
+        Optional<Apostador> apostador = apostadorService.buscarPorDni(id);
+        if (apostador.isPresent()) {
+            return ResponseEntity.ok(apostador.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
