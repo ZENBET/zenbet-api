@@ -26,7 +26,8 @@ public class AdministradorController {
 
     @GetMapping
     public ResponseEntity<List<Administrador>> listarAdministradores(){
-        return new ResponseEntity<List<Administrador>>(administradorService.listarAdministradores(), HttpStatus.OK);
+        return new ResponseEntity<List<Administrador>>(administradorService.listarAdministradores(),
+                HttpStatus.OK);
     }
 
     @PutMapping
