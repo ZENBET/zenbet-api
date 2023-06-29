@@ -32,8 +32,8 @@ public class ApostadorController {
         return new ResponseEntity<List<Apostador>>(apostadorService.listarApostadores(), HttpStatus.OK);
     }
 
-    @PutMapping("/find/{id}")
-    public ResponseEntity<Apostador> actualizarApostador(@PathVariable Long dni, @RequestBody Apostador apostador){
+    @PutMapping
+    public ResponseEntity<Apostador> actualizarApostador( @RequestBody Apostador apostador){
         Apostador updatedApos= apostadorService.actualizarApostador(apostador);
         if(updatedApos != null) {
             return new ResponseEntity<Apostador>(updatedApos, HttpStatus.OK);
@@ -49,9 +49,9 @@ public class ApostadorController {
     }
 
 
-    @GetMapping("/find/{id}")
-    public ResponseEntity<Apostador> buscarPorDni(@PathVariable("id") Long id) {
-        Optional<Apostador> apostador = apostadorService.buscarPorDni(id);
+    @GetMapping("/{dni}")
+    public ResponseEntity<Apostador> buscarPorDni(@PathVariable("dni") Long dni) {
+        Optional<Apostador> apostador = apostadorService.buscarPorDni(dni);
         if (apostador.isPresent()) {
             return ResponseEntity.ok(apostador.get());
         } else {
