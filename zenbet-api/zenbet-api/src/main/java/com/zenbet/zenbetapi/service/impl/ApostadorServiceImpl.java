@@ -30,14 +30,14 @@ public class ApostadorServiceImpl implements ApostadorService {
 
     @Override
     public Apostador actualizarApostador(Apostador apostador) {
-        Apostador adminToUpdate = apostadorRepository.findById(apostador.getDni()).orElse(null);
-        if(adminToUpdate != null) {
-            adminToUpdate.setNombre(apostador.getNombre());
-            adminToUpdate.setTelefono(apostador.getTelefono());
-            adminToUpdate.setCorreo(apostador.getCorreo());
-            adminToUpdate.setDireccion(apostador.getDireccion());
-            adminToUpdate.setContrasena(apostador.getContrasena());
-            return apostadorRepository.save(adminToUpdate);
+        Apostador aposToUpdate = apostadorRepository.findById(apostador.getDni()).orElse(null);
+        if(aposToUpdate != null) {
+            aposToUpdate.setNombre(apostador.getNombre());
+            aposToUpdate.setTelefono(apostador.getTelefono());
+            aposToUpdate.setCorreo(apostador.getCorreo());
+            aposToUpdate.setDireccion(apostador.getDireccion());
+            aposToUpdate.setContrasena(apostador.getContrasena());
+            return apostadorRepository.save(aposToUpdate);
         } else {
             return null;
         }
