@@ -1,6 +1,5 @@
 package com.zenbet.zenbetapi.service.impl;
 
-import com.zenbet.zenbetapi.domain.Competencia;
 import com.zenbet.zenbetapi.domain.Equipo;
 import com.zenbet.zenbetapi.repository.EquipoRepository;
 import com.zenbet.zenbetapi.service.EquipoService;
@@ -41,6 +40,11 @@ public class EquipoServiceImpl implements EquipoService {
     @Override
     public Optional<Equipo> buscarPorId(Long idEquipo) {
         return equipoRepository.findById(idEquipo);
+    }
+
+    @Override
+    public List<Equipo> findByNombre(String nombre) {
+        return equipoRepository.findByNombre(nombre);
     }
 
 }
