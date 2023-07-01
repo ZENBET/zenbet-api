@@ -3,6 +3,7 @@ package com.zenbet.zenbetapi.service.impl;
 import com.zenbet.zenbetapi.domain.Competencia;
 import com.zenbet.zenbetapi.repository.CompetenciaRepository;
 import com.zenbet.zenbetapi.service.CompetenciaService;
+import lombok.Lombok;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,5 +49,9 @@ public class CompetenciaServiceImpl implements CompetenciaService {
     @Override
     public Optional<Competencia> buscarPorId(Long id) {
         return competenciaRepository.findById(id);
+    }
+    @Override
+    public List<Competencia> findByNombre(String nombre) {
+        return competenciaRepository.findByNombre(nombre);
     }
 }

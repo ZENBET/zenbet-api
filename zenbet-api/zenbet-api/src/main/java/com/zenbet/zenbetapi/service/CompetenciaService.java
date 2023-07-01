@@ -12,5 +12,6 @@ public interface CompetenciaService {
     Competencia actualizarCompetencia(Competencia competencia);
     void eliminarCompetencia(Long idCompetencia);
     Optional<Competencia> buscarPorId(Long id);
+    List<Competencia> findByNombre(String nombre);
 
 }
