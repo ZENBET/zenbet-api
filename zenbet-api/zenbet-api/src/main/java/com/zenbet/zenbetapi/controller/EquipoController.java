@@ -57,4 +57,11 @@ public class EquipoController {
         }
     }
 
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<List<Equipo>> buscarPorNombre(@PathVariable("nombre") String nombre) {
+        nombre = "%" + nombre.toUpperCase() + "%";
+        List<Equipo> equipo = equipoService.findByNombre(nombre);
+        return ResponseEntity.ok(equipo);
+    }
+
 }

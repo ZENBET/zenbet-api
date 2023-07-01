@@ -18,4 +18,6 @@ public interface EquipoService {
 
     Optional<Equipo> buscarPorId(Long idEquipo);
 
+    List<Equipo> findByNombre(String nombre);
+
 }
