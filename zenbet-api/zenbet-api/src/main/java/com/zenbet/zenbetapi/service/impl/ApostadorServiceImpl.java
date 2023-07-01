@@ -57,7 +57,18 @@ public class ApostadorServiceImpl implements ApostadorService {
     }
 
     //Borrar de aca para adelante
-
+    @Override
+    public Apostador incrementarSaldo(Long dni, float cantidad) {
+        Apostador apostador = apostadorRepository.findById(dni).orElse(null);
+        if (apostador != null) {
+            float montoActual = apostador.getSaldo();
+            float nuevoMonto = montoActual + cantidad;
+            apostador.setSaldo(nuevoMonto);
+            return apostadorRepository.save(apostador);
+        } else {
+            return null;
+        }
+    }
 
 
 }

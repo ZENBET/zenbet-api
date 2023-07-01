@@ -18,7 +18,7 @@ public interface ApostadorService {
 
     Apostador findByDniAndContrasena(Long dni, String contrasena);
 
-    //Borrar desde aca
 
+    Apostador incrementarSaldo(Long dni, float cantidad);
 
 }
