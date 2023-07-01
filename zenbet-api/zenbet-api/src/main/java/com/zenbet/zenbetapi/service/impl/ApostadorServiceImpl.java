@@ -51,4 +51,13 @@ public class ApostadorServiceImpl implements ApostadorService {
     public Optional<Apostador> buscarPorDni(Long dni) {
         return apostadorRepository.findById(dni);
     }
+
+    public Apostador findByDniAndContrasena(Long dni, String contrasena) {
+        return apostadorRepository.findByDniAndContrasena(dni, contrasena);
+    }
+
+    //Borrar de aca para adelante
+
+
+
 }

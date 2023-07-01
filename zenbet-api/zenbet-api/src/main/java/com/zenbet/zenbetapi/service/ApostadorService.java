@@ -15,4 +15,10 @@ public interface ApostadorService {
     void eliminarApostador(Long dni);
 
     Optional<Apostador> buscarPorDni(Long dni);
+
+    Apostador findByDniAndContrasena(Long dni, String contrasena);
+
+    //Borrar desde aca
+
+
 }
