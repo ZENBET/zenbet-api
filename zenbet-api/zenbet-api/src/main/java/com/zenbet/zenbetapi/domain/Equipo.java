@@ -19,10 +19,10 @@ public class Equipo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEquipo;
 
-    @Column(name = "nombreEquipp", nullable = false, unique = true)
+    @Column(name = "nombre", nullable = false, unique = true)
     private String nombreEquipo;
 
-    @Column(name = "ubicaciónEquipo", nullable = false)
+    @Column(name = "ubicacion", nullable = false)
     private String ubicacionEquipo;
 
 }
