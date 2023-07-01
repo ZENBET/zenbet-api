@@ -28,4 +28,8 @@ public class Competencia {
 
     @Column(name = "fechaFin", nullable = false)
     private Date fechaFin;
+
+    /*public void setNombre(String nombreCompetencia) {
+        this.nombreCompetencia = nombreCompetencia;
+    }*/
 }
