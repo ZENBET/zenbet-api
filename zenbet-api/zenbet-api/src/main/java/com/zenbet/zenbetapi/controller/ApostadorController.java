@@ -4,17 +4,20 @@ import com.zenbet.zenbetapi.domain.Apostador;
 import com.zenbet.zenbetapi.repository.AdministradorRepository;
 import com.zenbet.zenbetapi.repository.ApostadorRepository;
 import com.zenbet.zenbetapi.service.ApostadorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/apostador")
 @CrossOrigin(origins = "http://localhost:4200")
 public class ApostadorController {
     private final ApostadorService apostadorService;
+    @Autowired
     public ApostadorController(ApostadorService apostadorService){
         this.apostadorService = apostadorService;
     }
@@ -58,5 +61,26 @@ public class ApostadorController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<Apostador> login(@RequestBody Apostador apostador) {
+        Long dni = apostador.getDni();
+        String contrasena = apostador.getContrasena();
+
+        Apostador authenticatedApostador = apostadorService.findByDniAndContrasena(dni, contrasena);
+
+        if (authenticatedApostador != null) {
+            // El inicio de sesión fue exitoso
+            return ResponseEntity.ok(authenticatedApostador);
+        } else {
+            // Las credenciales son incorrectas o el usuario no existe
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }
+
+    //BORRAR DE ACA SI SALE MAL
+
+
+
 
 }
