@@ -1,5 +1,6 @@
 package com.zenbet.zenbetapi.service.impl;
 
+import com.zenbet.zenbetapi.domain.Competencia;
 import com.zenbet.zenbetapi.domain.Equipo;
 import com.zenbet.zenbetapi.repository.EquipoRepository;
 import com.zenbet.zenbetapi.service.EquipoService;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class EquipoServiceImpl implements EquipoService {
     private final EquipoRepository equipoRepository;
@@ -34,5 +37,10 @@ public class EquipoServiceImpl implements EquipoService {
     }
     @Override
     public void eliminarEquipo(Long idEquipo){ equipoRepository.deleteById(idEquipo);}
+
+    @Override
+    public Optional<Equipo> buscarPorId(Long idEquipo) {
+        return equipoRepository.findById(idEquipo);
+    }
 
 }

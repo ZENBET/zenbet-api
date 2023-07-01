@@ -1,5 +1,6 @@
 package com.zenbet.zenbetapi.controller;
 
+import com.zenbet.zenbetapi.domain.Competencia;
 import com.zenbet.zenbetapi.domain.Equipo;
 import com.zenbet.zenbetapi.service.EquipoService;
 import org.springframework.http.HttpStatus;
@@ -7,8 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/v1/equipo")
+@CrossOrigin(origins = "http://localhost:4200")
 public class EquipoController {
 
     private final EquipoService equipoService;
@@ -37,10 +41,20 @@ public class EquipoController {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> eliminarEquipo(@RequestBody Equipo equipo){
-        equipoService.eliminarEquipo(equipo.getIdEquipo());
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarEquipo(@PathVariable("id") Long idEquipo){
+        equipoService.eliminarEquipo(idEquipo);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Equipo> buscarPorId(@PathVariable("id") Long idEquipo) {
+        Optional<Equipo> equipo = equipoService.buscarPorId(idEquipo);
+        if (equipo.isPresent()) {
+            return ResponseEntity.ok(equipo.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
 }
