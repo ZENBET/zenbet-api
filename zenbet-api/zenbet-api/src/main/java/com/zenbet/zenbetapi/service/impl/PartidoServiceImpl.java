@@ -1,11 +1,13 @@
 package com.zenbet.zenbetapi.service.impl;
 
+import com.zenbet.zenbetapi.domain.Equipo;
 import com.zenbet.zenbetapi.domain.Partido;
 import com.zenbet.zenbetapi.repository.PartidoRepository;
 import com.zenbet.zenbetapi.service.PartidoService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PartidoServiceImpl implements PartidoService {
@@ -44,5 +46,10 @@ public class PartidoServiceImpl implements PartidoService {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public Optional<Partido> buscarPorId(Long idPartido) {
+        return partidoRepository.findById(idPartido);
     }
 }

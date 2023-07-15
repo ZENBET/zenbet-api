@@ -1,6 +1,7 @@
 package com.zenbet.zenbetapi.controller;
 
 
+import com.zenbet.zenbetapi.domain.Equipo;
 import com.zenbet.zenbetapi.domain.Partido;
 import com.zenbet.zenbetapi.service.PartidoService;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/partido")
@@ -42,6 +44,16 @@ public class PartidoController {
             return new ResponseEntity<Partido>(updatedPartido, HttpStatus.OK);
         }else {
             return new ResponseEntity<Partido>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Partido> buscarPorId(@PathVariable("id") Long idPartido) {
+        Optional<Partido> partido = partidoService.buscarPorId(idPartido);
+        if (partido.isPresent()) {
+            return ResponseEntity.ok(partido.get());
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 }
