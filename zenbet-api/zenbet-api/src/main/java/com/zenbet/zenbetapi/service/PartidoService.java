@@ -5,4 +5,6 @@ import java.util.List;
 
 public interface PartidoService {
     List<Partido> listarAllPartidos();
+
+    Partido crearPatido(Partido partido);
 }

@@ -19,4 +19,9 @@ public class PartidoServiceImpl implements PartidoService {
     public List<Partido> listarAllPartidos() {
         return partidoRepository.findAll();
     }
+
+    @Override
+    public Partido crearPatido(Partido partido) {
+        return partidoRepository.save(partido);
+    }
 }

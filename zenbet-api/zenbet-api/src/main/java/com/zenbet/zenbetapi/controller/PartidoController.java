@@ -5,10 +5,7 @@ import com.zenbet.zenbetapi.domain.Partido;
 import com.zenbet.zenbetapi.service.PartidoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +23,9 @@ public class PartidoController {
     public ResponseEntity<List<Partido>> listarAllPartidos(){
         return new ResponseEntity<List<Partido>>(partidoService.listarAllPartidos(), HttpStatus.OK);
     }
-
+    //Crear partido
+    @PostMapping
+    public ResponseEntity<Partido> agregarPartido(@RequestBody Partido partido){
+        return  new ResponseEntity<Partido>(partidoService.crearPatido(partido), HttpStatus.CREATED);
+    }
 }
