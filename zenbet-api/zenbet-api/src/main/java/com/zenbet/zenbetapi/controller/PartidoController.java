@@ -28,4 +28,11 @@ public class PartidoController {
     public ResponseEntity<Partido> agregarPartido(@RequestBody Partido partido){
         return  new ResponseEntity<Partido>(partidoService.crearPatido(partido), HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminarPartido(@PathVariable("id") Long idPartido){
+        partidoService.eliminarPartido(idPartido);
+        return ResponseEntity.ok().build();
+    }
+
 }
