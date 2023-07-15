@@ -24,4 +24,10 @@ public class PartidoServiceImpl implements PartidoService {
     public Partido crearPatido(Partido partido) {
         return partidoRepository.save(partido);
     }
+
+    @Override
+    public void eliminarPartido(Long idPartido) {
+        partidoRepository.deleteById(idPartido);
+    }
+
 }
