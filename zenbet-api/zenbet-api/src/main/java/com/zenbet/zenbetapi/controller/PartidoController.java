@@ -35,4 +35,13 @@ public class PartidoController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping
+    public ResponseEntity<Partido> actualizarPartido(@RequestBody Partido partido){
+        Partido updatedPartido = partidoService.actualizarPartido(partido);
+        if (updatedPartido != null){
+            return new ResponseEntity<Partido>(updatedPartido, HttpStatus.OK);
+        }else {
+            return new ResponseEntity<Partido>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

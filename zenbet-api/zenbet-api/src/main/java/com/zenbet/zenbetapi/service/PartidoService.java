@@ -10,4 +10,6 @@ public interface PartidoService {
 
     void eliminarPartido(Long idPartido);
 
+    Partido actualizarPartido(Partido partido);
+
 }
