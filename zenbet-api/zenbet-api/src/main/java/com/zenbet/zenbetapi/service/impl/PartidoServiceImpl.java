@@ -30,4 +30,19 @@ public class PartidoServiceImpl implements PartidoService {
         partidoRepository.deleteById(idPartido);
     }
 
+    @Override
+    public Partido actualizarPartido(Partido partido) {
+        Partido partidoToUpdate = partidoRepository.findById(partido.getIdPartido()).orElse(null);
+        if (partidoToUpdate != null) {
+            partidoToUpdate.setEquipo1(partido.getEquipo1());
+            partidoToUpdate.setEquipo2(partido.getEquipo2());
+            partidoToUpdate.setCompetencia(partido.getCompetencia());
+            partidoToUpdate.setCuotaEquipo1(partido.getCuotaEquipo1());
+            partidoToUpdate.setCuotaEquipo2(partido.getCuotaEquipo2());
+            partidoToUpdate.setCuotaEmpate(partido.getCuotaEmpate());
+            return partidoRepository.save(partidoToUpdate);
+        } else {
+            return null;
+        }
+    }
 }
